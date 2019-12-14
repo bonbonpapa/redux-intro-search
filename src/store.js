@@ -15,11 +15,14 @@ let reducer = (state, action) => {
     if (action.type === "clear") {
         return { ... state, searchQuery: "", min: 0, max: 100000, inStock: false }
     }
+    if (action.type === "more-query") {
+        return {... state, moreQuery: action.moreQuery}
+    }
     return state  
 } 
 const store = createStore( 
     reducer, 
-    { searchQuery: "", min: 0, max: 100000, inStock: false }, 
+    { searchQuery: "", min: 0, max: 100000, inStock: false, moreQuery: false }, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
 ) 
 export default store 
