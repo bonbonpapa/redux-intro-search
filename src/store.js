@@ -22,7 +22,7 @@ let reducer = (state, action) => {
 } 
 const store = createStore( 
     reducer, 
-    { searchQuery: "", min: 0, max: 100000, inStock: false, moreQuery: false }, 
+    { searchQuery: "", min: 0, max: 100000, inStock: false, moreQuery: false , image:""}, 
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() 
 ) 
 export default store 

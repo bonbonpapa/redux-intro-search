@@ -1,5 +1,6 @@
 import { connect } from 'react-redux' 
 import React, { Component } from 'react' 
+import { Link } from 'react-router-dom'
 import data from './data.js' 
 class UnconnectedSearchResults extends Component { 
     render = () => { 
@@ -12,7 +13,7 @@ class UnconnectedSearchResults extends Component {
         }) 
         return (<div> 
             {results.map(r => { 
-                return (<div>{r.name}</div>) 
+                return (<div><Link to={"/item/"+r.id}>{r.name}</Link></div>) 
             })} 
         </div>) 
     } 
