@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom'
 import data from './data.js' 
 class UnconnectedSearchResults extends Component { 
     render = () => { 
+        const itags = this.props.query.split(" ");
+        
         let results = data.filter(item => {
             const inStock_check = (this.props.inStock) ? item.inStock : true; 
-            return (item.name.includes(this.props.query) && 
+            return ( (item.name.includes(this.props.query) || itags.every(tg => item.tags.indexOf(tg) > -1))  && 
             item.price >= this.props.minPrice && 
             item.price <= this.props.maxPrice && inStock_check
             )

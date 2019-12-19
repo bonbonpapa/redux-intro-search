@@ -4,11 +4,11 @@ class UnconnectedMoreSearch extends Component {
 
     handleMinimumPrice = evt => { 
         const ivalue = evt.target.value;
-        const price = (ivalue==='') ? 0 : parseInt(evt.target.value) 
+        const price = parseInt(evt.target.value) || 0;
         this.props.dispatch({ type: 'minimum-price', price: price }) 
     } 
     handleMaximumPrice = evt => { 
-        let price = parseInt(evt.target.value) 
+        let price = parseInt(evt.target.value) || 0;
         this.props.dispatch({ type: 'maximum-price', price: price }) 
     } 
     handleCheckStock = evt => {
