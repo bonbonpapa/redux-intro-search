@@ -2,6 +2,10 @@ import { connect } from 'react-redux'
 import React, { Component } from 'react' 
 class UnconnectedMoreSearch extends Component { 
 
+    handleTages = evt => {
+        this.props.dispatch({ type: 'search-tags', tags: evt.target.value }) 
+    }
+
     handleMinimumPrice = evt => { 
         const ivalue = evt.target.value;
         const price = parseInt(evt.target.value) || 0;
@@ -26,6 +30,10 @@ class UnconnectedMoreSearch extends Component {
         return ( 
             <div> 
                 <div> 
+                    Tags 
+                    <input type="text" onChange={this.handleTages} value={this.props.tags} /> 
+                </div> 
+                <div> 
                     Minimum price 
                     <input type="text" onChange={this.handleMinimumPrice} value={this.props.minPrice} /> 
                 </div> 
@@ -46,7 +54,8 @@ let mapStateToProps = st => {
     return { 
         minPrice: st.min, 
         maxPrice: st.max,
-        inStock: st.inStock
+        inStock: st.inStock,
+        tags: st.tags
     } 
 } 
 let MoreSearch = connect(mapStateToProps)(UnconnectedMoreSearch) 
